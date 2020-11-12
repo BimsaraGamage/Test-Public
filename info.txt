@@ -1,2 +1,4 @@
 This is the public rasa repository created for test ci cd process
 virtual env --> /home/bimsara/Desktop/Projects/Virtual envs/rasav2
+git repo --> https://github.com/BimsaraGamage/Test-Public.git
+local repo --> /home/bimsara/Desktop/Projects/Chatbot Development System/Rasa Project Public
