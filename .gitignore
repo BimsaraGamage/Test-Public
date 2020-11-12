@@ -1,0 +1,9 @@
+/models
+/__pycache__
+/events.db
+/events.db-shm
+/events.db-wal
+/__init__.py
+/rasa.db
+/Chat_Backup.db
+/story_graph.dot
