@@ -133,24 +133,14 @@ jobs:
         contains(  steps.files.outputs.all, 'actions/' ) 
         || contains(  steps.files.outputs.all, 'Dockerfile' )
       run: echo "ACTIONS_CHANGED=true" >> $GITHUB_ENV
-    - name: Authenticate into Google Cloud Platform
-      if: env.ACTIONS_CHANGED == 'true'
-      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        version: '275.0.0'
-        service_account_key: ${{ secrets.GCLOUD_AUTH }}
-    - name: Configure Docker to use Google Cloud Platform
-      if: env.ACTIONS_CHANGED == 'true'
-      run: |
-        gcloud auth configure-docker
     - name: Pull Latest Image
       if: env.ACTIONS_CHANGED == 'true'
       run: |
-        docker pull gcr.io/replicated-test/rasa-demo:latest || true
+        docker pull bimsara/rasa-demo:latest || true
     - name: Build Image
       if: env.ACTIONS_CHANGED == 'true'
       run: |
-        docker build --cache-from gcr.io/replicated-test/rasa-demo:latest .
+        docker build --cache-from bimsara/rasa-demo:latest .
 
   mergepal-merge: # run merge pal in the end
     runs-on: ubuntu-latest
