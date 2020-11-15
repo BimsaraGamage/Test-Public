@@ -113,16 +113,13 @@ jobs:
       run: |
         rasa test core --stories test/test_stories.md --fail-on-prediction-errors
     - name: Upload model
-      # if: |
-      #     github.base_ref == 'refs/heads/master' 
-      #     && env.RUN_TRAINING == 'true'
-      # uses: actions/upload-artifact@master
-      # with:
-      #   name: model
-      #   path: models
-      run: |
-        echo ${{github.base_ref}}
-        echo ${{github.ref}}
+      if: |
+          github.base_ref == 'master' 
+          && env.RUN_TRAINING == 'true'
+      uses: actions/upload-artifact@master
+      with:
+        name: model
+        path: models
   build-images:
     name: Build and Push Images
     needs: [lint-testing, type-testing, training-testing]
