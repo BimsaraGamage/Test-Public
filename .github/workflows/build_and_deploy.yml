@@ -114,7 +114,7 @@ jobs:
         rasa test core --stories test/test_stories.md --fail-on-prediction-errors
     - name: Upload model
       if: |
-          github.ref == 'refs/heads/master' 
+          github.base_ref == 'refs/heads/master' 
           && env.RUN_TRAINING == 'true'
       uses: actions/upload-artifact@master
       with:
