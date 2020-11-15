@@ -60,7 +60,7 @@ jobs:
       working-directory: ${{ github.workspace }}
       run: |
         model_path=`ls models/*.tar.gz | head -n 1`
-        curl -k -F "model=@${model_path}" "http://64c4fdb2c698.ngrok.io/api/projects/default/models?api_token=${RASA_X_API_TOKEN}"
+        curl -k --fail -F "model=@${model_path}" "http://64c4fdb2c698.ngrok.io/api/projects/default/models?api_token=${RASA_X_API_TOKEN}"
     - name: Tag uploaded model as active
       if: env.RUN_TRAINING == 'true'
       env:
@@ -72,4 +72,4 @@ jobs:
         model_no_prefix=${model_path/#"models/"}
         model_name=${model_no_prefix/%".tar.gz"}
         echo ${model_name}
-        curl -XPUT "http://64c4fdb2c698.ngrok.io/api/projects/default/models/${model_name}/tags/production?api_token=${RASA_X_API_TOKEN}"
+        curl --fail -XPUT "http://64c4fdb2c698.ngrok.io/api/projects/default/models/${model_name}/tags/production?api_token=${RASA_X_API_TOKEN}"
