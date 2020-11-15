@@ -62,9 +62,9 @@ def entity_table():
 
 
 intents = intent_table()
-entities = entity_table()
+#entities = entity_table()
 
 with open("results.md", "w") as f:
     f.write(intents)
-    f.write("\n\n\n")
-    f.write(entities)
+    #f.write("\n\n\n")
+    #f.write(entities)
