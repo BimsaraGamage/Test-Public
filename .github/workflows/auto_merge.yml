@@ -69,6 +69,7 @@ jobs:
       run: |
         model_path=`ls models/*.tar.gz | head -n 1`
         sleep 5
-        model_name=${model_path/%".tar.gz"}
+        model_no_prefix=${model_path/#"models/"}
+        model_name=${model_no_prefix/%".tar.gz"}
         echo ${model_name}
         curl -XPUT "http://64c4fdb2c698.ngrok.io/api/projects/default/models/${model_name}/tags/production?api_token=${RASA_X_API_TOKEN}"
