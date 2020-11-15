@@ -84,7 +84,7 @@ jobs:
           ( 
             ( 
               contains( github.event.pull_request.labels.*.name, 'nlu_testing_required' ) 
-              && contains(  steps.files.outputs.all, 'data/nlu*' ) 
+              && contains(  steps.files.outputs.all, 'data/nlu.yml' ) 
             )
             || contains(  steps.files.outputs.all, 'config.yml' ) 
           )
